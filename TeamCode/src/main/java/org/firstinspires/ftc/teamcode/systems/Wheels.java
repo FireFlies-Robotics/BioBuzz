@@ -3,6 +3,7 @@ import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
@@ -107,6 +108,7 @@ public class Wheels {
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+//        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
 
 // ToDO DoTo dodo change inch per tick
 
