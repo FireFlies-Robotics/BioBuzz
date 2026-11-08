@@ -41,9 +41,9 @@ public class TurningTest extends LinearOpMode {
     private double clusterX = 0;
     private PIDFController rotationController; // Aim bot pid
     // Rotate by X - rotKP = 0.001; rotKI = 0; rotKD = 0.044;
-    public static double rotKP = 0.001;
+    public static double rotKP = 0.044;
     public static double rotKI = 0;
-    public static double rotKD = 0.044;
+    public static double rotKD = 0.001;
 
     @Override
     public void runOpMode() {
@@ -73,12 +73,12 @@ public class TurningTest extends LinearOpMode {
         // Stream the same VisionPortal to FTC Dashboard
         FtcDashboard.getInstance().startCameraStream(visionPortal, 30);
 
-        telemetry.addLine("Camera initialized.");
-        telemetry.addLine("Open FTC Dashboard to view the webcam.");
-        telemetry.addLine("Press START to begin.");
-        telemetry.addLine("D-pad UP: Resume camera");
-        telemetry.addLine("D-pad DOWN: Stop camera stream");
-        telemetry.update();
+//        telemetry.addLine("Camera initialized.");
+//        telemetry.addLine("Open FTC Dashboard to view the webcam.");
+//        telemetry.addLine("Press START to begin.");
+//        telemetry.addLine("D-pad UP: Resume camera");
+//        telemetry.addLine("D-pad DOWN: Stop camera stream");
+//        telemetry.update();
 
         waitForStart();
 
@@ -101,6 +101,7 @@ public class TurningTest extends LinearOpMode {
             }
 
             // Debug Section for config
+            //FIXME Edit out and finalize constants when tuning is finished
             rotationController.kP = rotKP;
             rotationController.kI = rotKI;
             rotationController.kD = rotKD;
@@ -117,6 +118,7 @@ public class TurningTest extends LinearOpMode {
 
             wheels.setMaxSpeed(1-0.7*gamepad1.left_trigger);
             wheels.driveByJoystickFieldOriented(gamepad1.left_stick_x, -gamepad1.left_stick_y, rotation);
+            telemetry.update();
         }
 
         // Stop Dashboard stream and release the camera
@@ -125,7 +127,6 @@ public class TurningTest extends LinearOpMode {
         if (visionPortal != null) {
             visionPortal.close();
         }
-        telemetry.update();
     }
 
     /**
