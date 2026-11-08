@@ -32,8 +32,8 @@ public class TurningTest extends LinearOpMode {
     private VisionPortal visionPortal;
 
     // Camera VID/PID for the optional USB compatibility quirk
-    private static final int VENDOR_ID_SUNPLUS_INNOVATION_TECHNOLOGY = 0x1BCF;
-    private static final int PRODUCT_ID_ARDUCAM_OV5648 = 0x284C;
+    private static final int VENDOR_ID = 0x046d;
+    private static final int PRODUCT_ID = 0x0892;
 
     IMU imu;
     private static Wheels wheels;
@@ -57,8 +57,8 @@ public class TurningTest extends LinearOpMode {
 
         // Optional camera compatibility quirk
         CameraCompatibilityManager.getInstance().addQuirk(
-                VENDOR_ID_SUNPLUS_INNOVATION_TECHNOLOGY,
-                PRODUCT_ID_ARDUCAM_OV5648,
+                VENDOR_ID,
+                PRODUCT_ID,
                 CameraCompatibilityManager.Quirk.AVOID_LIB_USB_RESET_DEVICE
         );
 
