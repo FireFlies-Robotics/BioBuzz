@@ -41,9 +41,9 @@ public class TurningTest extends LinearOpMode {
     private double clusterX = 0;
     private PIDFController rotationController; // Aim bot pid
     // Rotate by X - rotKP = 0.001; rotKI = 0; rotKD = 0.044;
-    public static double rotKP = 0.044;
+    public static double rotKP = 0.0004;
     public static double rotKI = 0;
-    public static double rotKD = 0.001;
+    public static double rotKD = 0.034;
 
     @Override
     public void runOpMode() {
@@ -107,7 +107,7 @@ public class TurningTest extends LinearOpMode {
             rotationController.kD = rotKD;
             // End DEBUG
             if (gamepad1.right_bumper) { // Auto aim code
-                rotation = (float) -rotationController.calculate(0, clusterX);
+                rotation = (float) rotationController.calculate(0, clusterX);
                 if (Math.abs(rotation) > 0.8) {
                     rotation = (float) (Math.signum(rotation)*0.8);
                 }
@@ -261,7 +261,7 @@ public class TurningTest extends LinearOpMode {
 //                        detection.ftcPose.bearing,
 //                        detection.ftcPose.elevation
 //                ));
-                return detection.ftcPose.x;
+                return detection.ftcPose.bearing;
             }
         }
 
